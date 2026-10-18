@@ -4,23 +4,23 @@ Script      : collect_info.sh
 
 === System Time ===
 Date       : 2026-10-18
-Time       : 15:04:32
+Time       : 15:08:00
 Timezone   : CST (UTC+08:00)
-Unix epoch : 1792307072
+Unix epoch : 1792307280
 Host       : elbow-Legion-Y7000P-IAX10
 Kernel     : Linux 7.0.0-38-generic
 
 === Last 10 Commands ===
- 1. [200~curl -s --proxy http://127.0.0.1:7897 https://ipinfo.io/json~
- 2. curl -s --proxy http://127.0.0.1:7897 https://ipinfo.io/json
- 3. mkdir -p ~/.local/share/applications
- 4. cp /usr/share/applications/chatgpt.desktop ~/.local/share/applications/
- 5. sed -i 's|^Exec=chatgpt %U|Exec=env https_proxy=http://127.0.0.1:7897 http_proxy=http://127.0.0.1:7897 all_proxy=socks://127.0.0.1:7897 chatgpt %U|'   ~/.local/share/applications/chatgpt.desktop
- 6. update-desktop-database ~/.local/share/applications 2>/dev/null
- 7. grep '^Exec=' ~/.local/share/applications/chatgpt.desktop
- 8. pkill -f "/usr/lib/chatgpt/ChatGPT"
- 9. env | grep -i proxy
-10. chatgpt
+ 1. vim 2027/elbowsports/homework/collect_info.sh
+ 2. git status
+ 3. git diff
+ 4. git log --oneline -3
+ 5. git remote -v
+ 6. bash 2027/elbowsports/homework/collect_info.sh
+ 7. cat 2027/elbowsports/homework/output.txt
+ 8. git add 2027/elbowsports/homework/output.txt
+ 9. git commit -m "Regenerate homework output with local shell history."
+10. git push
 
 === Notes Word Count ===
 File       : notes/lecture1-notes.md
