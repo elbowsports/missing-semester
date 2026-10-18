@@ -4,9 +4,9 @@ Script      : collect_info.sh
 
 === System Time ===
 Date       : 2026-10-18
-Time       : 15:08:00
+Time       : 15:16:30
 Timezone   : CST (UTC+08:00)
-Unix epoch : 1792307280
+Unix epoch : 1792307790
 Host       : elbow-Legion-Y7000P-IAX10
 Kernel     : Linux 7.0.0-38-generic
 
@@ -24,8 +24,8 @@ Kernel     : Linux 7.0.0-38-generic
 
 === Notes Word Count ===
 File       : notes/lecture1-notes.md
-Lines      : 93
-Bytes      : 3047
-English words : 316
-Chinese chars : 597
+Lines      : 64
+Bytes      : 1904
+English words : 237
+Chinese chars : 332
 
