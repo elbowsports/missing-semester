@@ -123,11 +123,16 @@ collect_wordcount() {
     local lines words bytes
     read -r lines words bytes < <(wc -l -w -c < "$NOTES_FILE" | tr -s ' ')
     printf 'Lines      : %s\n' "$lines"
-    printf 'Words (wc) : %s\n' "$words"
     printf 'Bytes      : %s\n' "$bytes"
 
-    # Count CJK characters separately, because wc -w treats a whole Chinese
-    # sentence as one word. The ranges cover the common CJK blocks.
+    # wc -w counts whitespace-separated tokens. In a Chinese document a whole
+    # sentence glued together counts as one "word", so the number is only
+    # meaningful for the Latin parts. The two counts are reported separately
+    # instead of being added together, because adding words and characters
+    # would not produce a meaningful number.
+    printf 'English words : %s\n' "$words"
+
+    # Count CJK characters, because wc -w does not split them.
     # grep exits with status 1 when nothing matches, which under `set -e` and
     # `pipefail` would abort the whole script, so the failure is neutralised
     # with `|| true` before piping into wc.
@@ -136,11 +141,8 @@ collect_wordcount() {
         "$NOTES_FILE" 2>/dev/null || true; } | wc -l)"
     cjk="${cjk//[[:space:]]/}"
     [[ "$cjk" =~ ^[0-9]+$ ]] || cjk=0
-    printf 'CJK chars  : %s\n' "$cjk"
+    printf 'Chinese chars : %s\n' "$cjk"
 
-    # Total length used for the assignment: Latin words plus CJK characters.
-    local total=$(( words + cjk ))
-    printf 'Total      : %s\n' "$total"
     printf '\n'
 }
 
