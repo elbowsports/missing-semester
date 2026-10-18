@@ -1,4 +1,4 @@
-# 第一课笔记：Linux、Vim & Shell、Git & GitHub
+# 第一课笔记：Linux、Shell 与 Vim
 
 DynamicX 27 赛季控制视觉招新培训第一课
 Ubuntu 24.04
@@ -84,84 +84,10 @@ Vim 常用于 SSH 和无桌面环境中的配置、代码编辑。它是有模�
 
 练习流程：`vim hello.txt` 打开 → `i` 输入文本 → `Esc` → `:wq` 保存退出 → 再次打开，用 `dd`、`u`、`/word` 练习删除、撤销和搜索。
 
-## 三、Git 与 GitHub
-
-### 分工
-
-Git 负责本地版本控制：记录每次提交、比较修改、查看历史、为功能创建分支。
-
-GitHub 负责远程托管与协作：托管 Git 仓库、通过 PR 讨论评审、合并团队认可的修改。
-
-### 四个位置
-
-```
-工作区 --git add--> 暂存区 --git commit--> 本地仓库 --git push--> GitHub 远程仓库
-```
-
-commit 只记录到本地仓库，push 才把提交发送到远程。
-
-### 首次配置
-
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
-```
-
-姓名与邮箱会写入提交记录，用来回答"这次修改由谁提交"。
-
-### SSH 密钥
-
-```bash
-ssh-keygen -t ed25519 -C "you@example.com"
-cat ~/.ssh/id_ed25519.pub
-```
-
-公钥 `id_ed25519.pub` 复制到 GitHub 的 SSH 设置；私钥 `id_ed25519` 不上传、不截图、不分享。
-
-添加到 GitHub 的步骤：Settings → SSH and GPG keys → New SSH key，选 Authentication Key，填名称并粘贴完整公钥。然后用 `ssh -T git@github.com` 测试，首次连接先核对官方主机指纹。
-
-### 常用命令
-
-```bash
-git clone <仓库地址>            # 下载仓库及提交历史
-git status                     # 查看当前分支和文件状态
-git diff                       # 查看尚未暂存的修改
-git log --oneline              # 简短格式查看提交历史
-
-git switch -c feature/hello    # 创建并切换到功能分支
-git add hello.txt              # 暂存指定文件
-git commit -m "Add greeting"   # 记录一次本地提交
-git push -u origin feature/hello   # 推送并建立跟踪关系
-git switch main                # 切回主分支
-git pull                       # 获取并整合远程更新
-```
-
-切分支前先看 `status`。
-
-### 分支与 PR 工作流
-
-main 保持稳定，feature 分支承载本次修改，评审后再合并。分支让同一仓库中的开发互不打扰。
-
-团队默认用 Fork 协作：Fork 仓库副本到个人账号，Clone 到本地，在 feature 分支上修改、add、commit，push 到个人 Fork，再向团队仓库发起 PR，评审后 Merge。有团队仓库推送权限时可以省略 Fork，直接用同仓库分支。
-
-Fork 是仓库副本，Branch 是仓库内的开发线，这是两者的区别。
-
-## 四、回顾
+## 三、回顾
 
 | 环节 | 作用 |
 | --- | --- |
 | Linux | 进入开发环境 |
 | Shell | 定位与操作文件 |
 | Vim | 编辑文件内容 |
-| Git | 分支、暂存与提交 |
-| GitHub | PR、评审与合并 |
-
-## 五、课后任务
-
-仓库：https://github.com/OceanCing/missing-semester
-
-1. fork 目标仓库，clone 到本地
-2. 阅读 `2027` 文件夹中的 `TASK.md`，理解任务要求后完成
-3. 按工作流规范提交 PR 到目标仓库
-4. 该仓库后续还会用于提交其他作业
-5. 学有余力可以提前了解 catkin 与 CMake
