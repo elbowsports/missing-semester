@@ -24,8 +24,8 @@ Kernel     : Linux 7.0.0-38-generic
 
 === Notes Word Count ===
 File       : notes/lecture1-notes.md
-Lines      : 167
-Bytes      : 5746
-English words : 518
-Chinese chars : 1077
+Lines      : 93
+Bytes      : 3047
+English words : 316
+Chinese chars : 597
 
